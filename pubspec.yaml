@@ -49,3 +49,10 @@ flutter:
     - assets/images/antonio-sokic.jpg
     - assets/images/daria-sannikova.jpg
     - assets/images/djordje-cvetkovic.jpg
+  fonts:
+    - family: Caveat
+      fonts: 
+        - asset: assets/fonts/Caveat-Regular.ttf
+    - family: PermanentMarker
+      fonts:
+        - asset: assets/fonts/PermanentMarker-Regular.ttf

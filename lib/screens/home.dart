@@ -14,15 +14,16 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 100),
+            const SizedBox(height: 70),
             Container(
-              margin: const EdgeInsets.only(bottom: 24.0),
+              margin: const EdgeInsets.only(bottom: 6.0),
               child: const Text(
                 'WELCOME, INVESTIGATOR',
                 style: const TextStyle(
+                  fontFamily: 'PermanentMarker',
                   fontSize: 24.0,
                   color: AppColors.black60,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ),
@@ -31,9 +32,10 @@ class Home extends StatelessWidget {
               child: const Text(
                 '$PLAYER_NAME',
                 style: const TextStyle(
+                  fontFamily: 'PermanentMarker',
                   fontSize: 24.0,
                   color: AppColors.black60,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ),
@@ -42,9 +44,10 @@ class Home extends StatelessWidget {
               child: const Text(
                 'Ready to solve these cases?',
                 style: const TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 22.0,
+                  fontFamily: 'Caveat',
                   color: AppColors.black60,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
