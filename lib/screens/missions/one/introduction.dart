@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_setup/models/exports.dart';
+import 'package:flutter_redux_setup/screens/missions/one/mission_one.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
 import 'package:flutter_redux_setup/widgets/start_button.dart';
 
@@ -59,7 +60,13 @@ class Introduction extends StatelessWidget {
                 ),
               ),
             ),
-            StartButton(onPressed: () {}),
+            StartButton(onPressed: () {
+              Navigator.of(context).push<dynamic>(
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => MissionOne(),
+                ),
+              );
+            }),
             const SizedBox(
               height: 12.0,
             ),

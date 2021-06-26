@@ -8,5 +8,8 @@ class AppColors {
   static const Color black60 = const Color(0x99000000);
   static const Color black40 = const Color(0x66000000);
 
+  static Color message = Colors.blue[400] as Color;
+  static Color gallery = Colors.red[400] as Color;
+
   static const Color gray16 = const Color.fromRGBO(0, 0, 0, 0.16);
 }
