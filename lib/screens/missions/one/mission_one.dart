@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux_setup/models/chat_message.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
 
-class MissionOne extends StatelessWidget {
+class MissionOne extends StatefulWidget {
   static const String BACKGROUND_IMAGE = 'assets/images/gilberto-reyes.jpg';
+
+  @override
+  _MissionOneState createState() => _MissionOneState();
+}
+
+class _MissionOneState extends State<MissionOne> {
+  late List<ChatMessage> chatMessages;
+
+  late List<String> photos;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +29,7 @@ class MissionOne extends StatelessWidget {
         decoration: const BoxDecoration(
           image: const DecorationImage(
             image: const AssetImage(
-              BACKGROUND_IMAGE,
+              MissionOne.BACKGROUND_IMAGE,
             ),
             fit: BoxFit.cover,
           ),
@@ -41,7 +57,15 @@ class MissionOne extends StatelessWidget {
                             size: 32,
                             color: Colors.white,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push<dynamic>(
+                              MaterialPageRoute<dynamic>(
+                                builder: (BuildContext context) => ChatList(
+                                  chatMessages: chatMessages,
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Text(
