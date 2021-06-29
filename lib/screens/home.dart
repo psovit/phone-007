@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_setup/models/enums.dart';
 import 'package:flutter_redux_setup/models/mission.dart';
 import 'package:flutter_redux_setup/redux/app_state.dart';
 import 'package:flutter_redux_setup/redux/mission_state/mission_actions.dart';
@@ -80,61 +79,31 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    MissionCard(
-                      cardColor: AppColors.gray16,
-                      mission: Mission(
-                        1,
-                        '1. Introduction',
-                        'assets/images/daniel-eliashevsky.jpg',
-                        MissionStatus.inProgress,
-                      ),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200,
+                      childAspectRatio: 2 / 2,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
                     ),
-                    const SizedBox(width: 20.0),
-                    MissionCard(
-                      cardColor: AppColors.white,
-                      mission: Mission(
-                        2,
-                        '2. Missing Person',
-                        'assets/images/djordje-cvetkovic.jpg',
-                        MissionStatus.completed,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    MissionCard(
-                      cardColor: AppColors.white,
-                      mission: Mission(
-                        3,
-                        '3. Grandfather\'s secret',
-                        'assets/images/antonio-sokic.jpg',
-                        MissionStatus.completed,
-                      ),
-                    ),
-                    const SizedBox(width: 20.0),
-                    MissionCard(
-                      cardColor: AppColors.gray16,
-                      mission: Mission(
-                        4,
-                        '4. Suicide or Murder?',
-                        'assets/images/daria-sannikova.jpg',
-                        MissionStatus.inProgress,
-                      ),
-                    ),
-                  ],
+                    itemCount: missions.length,
+                    itemBuilder: (BuildContext ctx, int index) {
+                      return MissionCard(
+                        cardColor:
+                            index % 3 == 0 ? AppColors.gray16 : AppColors.white,
+                        mission: missions[index],
+                      );
+                    },
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 24.0),
                   child: const Text(
                     'More missions coming soon...',
                     style: const TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 16.0,
                       color: AppColors.black60,
                       fontWeight: FontWeight.bold,
                     ),
