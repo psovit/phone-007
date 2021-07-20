@@ -1,7 +1,7 @@
 import 'package:flutter_redux_setup/redux/app_state.dart';
-import 'package:flutter_redux_setup/redux/chat_message_state/chat_message_reducer.dart';
+import 'package:flutter_redux_setup/redux/chat_message_state/reducers.dart';
 import 'package:flutter_redux_setup/redux/gallery_state/gallery_reducer.dart';
-import 'package:flutter_redux_setup/redux/mission_state/mission_reducers.dart';
+import 'package:flutter_redux_setup/redux/mission_state/reducers.dart';
 
 AppState appStateReducer(AppState state, dynamic action) {
   return AppState(

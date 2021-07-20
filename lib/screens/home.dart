@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_setup/models/mission.dart';
 import 'package:flutter_redux_setup/redux/app_state.dart';
-import 'package:flutter_redux_setup/redux/mission_state/mission_actions.dart';
+import 'package:flutter_redux_setup/redux/mission_state/actions/export.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
 import 'package:redux/redux.dart';
@@ -84,9 +84,9 @@ class _HomeState extends State<Home> {
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: 200,
-                      childAspectRatio: 2 / 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
                     ),
                     itemCount: missions.length,
                     itemBuilder: (BuildContext ctx, int index) {

@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_setup/models/exports.dart';
+import 'package:flutter_redux_setup/redux/chat_message_state/actions/exports.dart';
 import 'package:flutter_redux_setup/screens/missions/one/mission_one.dart';
+import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
 import 'package:flutter_redux_setup/widgets/start_button.dart';
 
@@ -61,6 +63,7 @@ class Introduction extends StatelessWidget {
               ),
             ),
             StartButton(onPressed: () {
+              _fetchChatMessages();
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
                   builder: (BuildContext context) => MissionOne(),
@@ -75,6 +78,19 @@ class Introduction extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _fetchChatMessages() async {
+    final bool fetched = Di()
+        .getStore()
+        .state
+        .chatMessageState
+        .missionChatThreadLoaded(mission.id);
+    if (!fetched) {
+      final List<ChatThreadView> chatThreads =
+          await Di().getChatMessageRepository().getChatMessages(mission.id);
+      Di().getStore().dispatch(LoadChatThreads(chatThreads));
+    }
   }
 }
 

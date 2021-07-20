@@ -12,4 +12,5 @@ class AppColors {
   static Color gallery = Colors.red[400] as Color;
 
   static const Color gray16 = const Color.fromRGBO(0, 0, 0, 0.16);
+  static const Color gray4 = const Color.fromRGBO(0, 0, 0, 0.04);
 }

@@ -1,55 +1,45 @@
 import 'package:flutter_redux_setup/models/exports.dart';
 
 abstract class ChatMessageRepository {
-  Future<List<ChatMessage>> getChatMessages(int missionId);
+  Future<List<ChatThreadView>> getChatMessages(int missionId);
 }
 
 class ChatMessageApi implements ChatMessageRepository {
   @override
-  Future<List<ChatMessage>> getChatMessages(int missionId) async {
-    final List<ChatMessage> chatMessages = <ChatMessage>[
-      ChatMessage(
-        1,
-        1,
-        'Dad',
-        DateTime.now().subtract(const Duration(hours: 17)),
-        'Hey son, how are things?',
+  Future<List<ChatThreadView>> getChatMessages(int missionId) async {
+    final List<ChatThreadView> chatMessages = <ChatThreadView>[
+      ChatThreadView(
+        missionId: 1,
+        chatThreadId: 1,
+        senderName: 'Dad',
+        senderImageUrl: '',
+        senderNumber: '',
+        chatMessages: <ChatMessage>[],
       ),
-      ChatMessage(
-        2,
-        1,
-        'Me',
-        DateTime.now().subtract(const Duration(hours: 16)),
-        'Going good Dad.',
+      ChatThreadView(
+        missionId: 1,
+        chatThreadId: 2,
+        senderName: 'Mom',
+        senderImageUrl: '',
+        senderNumber: '',
+        chatMessages: <ChatMessage>[],
       ),
-      ChatMessage(
-        3,
-        1,
-        'Me',
-        DateTime.now().subtract(const Duration(hours: 16)),
-        'How are you?',
-      ),
-      ChatMessage(
-        4,
-        1,
-        'Dad',
-        DateTime.now().subtract(const Duration(hours: 16)),
-        'Good so far. So are you coming later today?',
-      ),
-      ChatMessage(
-        5,
-        1,
-        'Me',
-        DateTime.now().subtract(const Duration(hours: 16)),
-        'Yes, of course',
-      ),
-      ChatMessage(
-        6,
-        1,
-        'Dad',
-        DateTime.now().subtract(const Duration(hours: 16)),
-        'Great, see ya then.',
-      ),
+      // ChatThreadView(
+      //   1,
+      //   1,
+      //   '',
+      //   'Dad',
+      //   '🤣',
+      //   DateTime.now().subtract(const Duration(days: 1)),
+      // ),
+      // ChatThreadView(
+      //   1,
+      //   2,
+      //   '',
+      //   'Mom',
+      //   '🐻',
+      //   DateTime.now().subtract(const Duration(days: 1)),
+      // ),
     ];
     return chatMessages;
   }

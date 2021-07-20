@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_setup/models/exports.dart';
+import 'package:flutter_redux_setup/redux/mission_state/actions/export.dart';
 import 'package:flutter_redux_setup/screens/missions/one/introduction.dart';
+import 'package:flutter_redux_setup/utils/exports.dart';
 
 class MissionCard extends StatelessWidget {
   const MissionCard({
@@ -57,6 +59,7 @@ class MissionCard extends StatelessWidget {
       child: InkWell(
         child: card,
         onTap: () {
+          Di().getStore().dispatch(SetCurrentMission(mission));
           Navigator.of(context, rootNavigator: true).push<dynamic>(
             MaterialPageRoute<dynamic>(
               builder: (BuildContext context) => Introduction(

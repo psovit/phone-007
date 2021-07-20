@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/models/chat_message.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
 
@@ -11,8 +10,6 @@ class MissionOne extends StatefulWidget {
 }
 
 class _MissionOneState extends State<MissionOne> {
-  late List<ChatMessage> chatMessages;
-
   late List<String> photos;
 
   @override
@@ -61,7 +58,13 @@ class _MissionOneState extends State<MissionOne> {
                             Navigator.of(context).push<dynamic>(
                               MaterialPageRoute<dynamic>(
                                 builder: (BuildContext context) => ChatList(
-                                  chatMessages: chatMessages,
+                                  missionId: Di()
+                                          .getStore()
+                                          .state
+                                          .missionState
+                                          .getCurrentMission()
+                                          ?.id ??
+                                      -1,
                                 ),
                               ),
                             );
