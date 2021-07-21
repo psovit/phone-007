@@ -66,8 +66,10 @@ class _ChatListState extends State<ChatList> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: ListTile(
-                  leading: const CircleAvatar(
-                    child: Icon(Icons.account_circle),
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(
+                      chatThreadView.senderImageUrl,
+                    ),
                   ),
                   title: Text(chatThreadView.senderName),
                   subtitle: Text(lastMessageText(chatThreadView.lastMessage())),

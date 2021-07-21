@@ -63,8 +63,10 @@ class ChatDetail extends StatelessWidget {
                   children: <Widget>[
                     chatMessage.isSentByMe
                         ? Text(DateFormat.jm().format(chatMessage.sentDate))
-                        : const CircleAvatar(
-                            child: Icon(Icons.account_box_outlined),
+                        : CircleAvatar(
+                            backgroundImage: AssetImage(
+                              chatThreadView.senderImageUrl,
+                            ),
                           ),
                     Flexible(
                       child: Container(

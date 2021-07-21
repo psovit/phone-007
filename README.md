@@ -9,3 +9,5 @@ There are 4 missions on this game.
 3-Photo by Djordje Cvetkovic from Pexels
 4-Photo by Daria Sannikova from Pexels
 5-Photo by Gilberto Reyes from Pexels
+6-Photo by Hamro Jatra from Pexels
+7-Photo by Prateek Katyal from Pexels

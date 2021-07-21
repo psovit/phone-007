@@ -12,7 +12,7 @@ class ChatMessageApi implements ChatMessageRepository {
         missionId: 1,
         chatThreadId: 1,
         senderName: 'Dad',
-        senderImageUrl: '',
+        senderImageUrl: 'assets/images/prateek-katyal.jpg',
         senderNumber: '',
         chatMessages: <ChatMessage>[
           ChatMessage(
@@ -82,7 +82,7 @@ class ChatMessageApi implements ChatMessageRepository {
         missionId: 1,
         chatThreadId: 2,
         senderName: 'Mom',
-        senderImageUrl: '',
+        senderImageUrl: 'assets/images/hamro-jatra.jpg',
         senderNumber: '',
         chatMessages: <ChatMessage>[],
       ),
