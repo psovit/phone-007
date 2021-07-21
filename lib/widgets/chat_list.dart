@@ -4,6 +4,7 @@ import 'package:flutter_redux_setup/models/exports.dart';
 import 'package:flutter_redux_setup/redux/app_state.dart';
 import 'package:flutter_redux_setup/utils/app_colors.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
+import 'package:flutter_redux_setup/widgets/chat_detail.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:redux/redux.dart';
 
@@ -58,7 +59,7 @@ class _ChatListState extends State<ChatList> {
           child: ListView.builder(
             itemCount: chatThreads.length,
             itemBuilder: (_, int index) {
-              final ChatThreadView chatListView = chatThreads[index];
+              final ChatThreadView chatThreadView = chatThreads[index];
               return Container(
                 decoration: BoxDecoration(
                   color: AppColors.gray4,
@@ -68,14 +69,22 @@ class _ChatListState extends State<ChatList> {
                   leading: const CircleAvatar(
                     child: Icon(Icons.account_circle),
                   ),
-                  title: Text(chatListView.senderName),
-                  subtitle: Text(lastMessageText(chatListView.lastMessage())),
+                  title: Text(chatThreadView.senderName),
+                  subtitle: Text(lastMessageText(chatThreadView.lastMessage())),
                   trailing: Text(
                     timeago.format(
-                      chatListView.lastMessage().sentDate.toLocal(),
+                      chatThreadView.lastMessage().sentDate.toLocal(),
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push<dynamic>(
+                      MaterialPageRoute<dynamic>(
+                        builder: (BuildContext context) => ChatDetail(
+                          chatThreadView: chatThreadView,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               );
             },

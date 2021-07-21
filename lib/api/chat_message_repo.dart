@@ -14,7 +14,69 @@ class ChatMessageApi implements ChatMessageRepository {
         senderName: 'Dad',
         senderImageUrl: '',
         senderNumber: '',
-        chatMessages: <ChatMessage>[],
+        chatMessages: <ChatMessage>[
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(
+              const Duration(days: 1, hours: 4),
+            ),
+            id: 1,
+            message: 'Hey, how is it going?',
+            sender: 'Dad',
+          ),
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(
+              const Duration(hours: 6, seconds: 42),
+            ),
+            id: 2,
+            message: 'Hey Dad, finally got my new phone.',
+            sender: 'You',
+          ),
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(
+              const Duration(hours: 6, seconds: 40),
+            ),
+            id: 2,
+            message: 'Going pretty good. How are you?',
+            sender: 'You',
+          ),
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(
+              const Duration(hours: 6, seconds: 30),
+            ),
+            id: 3,
+            message: 'Great to hear. Congratulations on your new house.',
+            sender: 'Dad',
+          ),
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(
+              const Duration(hours: 6, seconds: 15),
+            ),
+            id: 4,
+            message: 'Ok, Gotta go. Will talk later. Tc.',
+            sender: 'Dad',
+          ),
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(
+              const Duration(hours: 6, seconds: 10),
+            ),
+            id: 5,
+            message: 'Haha, thanks! Later.',
+            sender: 'You',
+          ),
+          ChatMessage(
+            chatThreadId: 1,
+            sentDate: DateTime.now().subtract(const Duration(hours: 6)),
+            id: 6,
+            message: '🐻',
+            sender: 'Dad',
+          ),
+        ],
       ),
       ChatThreadView(
         missionId: 1,
