@@ -1,13 +1,33 @@
+import 'package:flutter_redux_setup/models/exports.dart';
+import 'package:collection/collection.dart' as collection;
+
 class GalleryState {
   GalleryState(
-    this._images,
+    this._galleries,
   );
 
-  final List<String> _images;
+  final List<GalleryView> _galleries;
 
   static GalleryState init() {
     return GalleryState(
-      <String>[],
+      <GalleryView>[],
     );
+  }
+
+  GalleryState loadGallery(GalleryView galleryView, {bool reset = true}) {
+    final List<GalleryView> newState = List<GalleryView>.from(_galleries);
+    if (reset) {
+      newState.removeWhere((_) => _.missionId == galleryView.missionId);
+    }
+    newState.add(galleryView);
+    return GalleryState(newState);
+  }
+
+  GalleryView? getGalleryForMission(int missionId) {
+    return _galleries.firstWhereOrNull((_) => _.missionId == missionId);
+  }
+
+  bool galleryLoaded(int missionId) {
+    return getGalleryForMission(missionId) != null;
   }
 }

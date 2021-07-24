@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_setup/models/exports.dart';
 import 'package:flutter_redux_setup/redux/chat_message_state/actions/exports.dart';
+import 'package:flutter_redux_setup/redux/gallery_state/actions/load_gallery.dart';
 import 'package:flutter_redux_setup/screens/missions/one/mission_one.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
@@ -11,10 +12,6 @@ import 'package:flutter_redux_setup/widgets/start_button.dart';
 class Introduction extends StatelessWidget {
   const Introduction({Key? key, required this.mission}) : super(key: key);
   final Mission mission;
-
-  String _missionDescription() {
-    return "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +51,7 @@ class Introduction extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(vertical: 6, horizontal: 24.0),
               child: Text(
-                _missionDescription(),
+                mission.description,
                 style: const TextStyle(
                   fontFamily: 'Caveat',
                   fontSize: 20.0,
@@ -63,7 +60,7 @@ class Introduction extends StatelessWidget {
               ),
             ),
             StartButton(onPressed: () {
-              _fetchChatMessages();
+              _loadMissionObjects();
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
                   builder: (BuildContext context) => MissionOne(),
@@ -80,6 +77,15 @@ class Introduction extends StatelessWidget {
     );
   }
 
+  void _loadMissionObjects() {
+    if (mission.hasChatMessages) {
+      _fetchChatMessages();
+    }
+    if (mission.hasGallery) {
+      _fetchGallery();
+    }
+  }
+
   Future<void> _fetchChatMessages() async {
     final bool fetched = Di()
         .getStore()
@@ -90,6 +96,16 @@ class Introduction extends StatelessWidget {
       final List<ChatThreadView> chatThreads =
           await Di().getChatMessageRepository().getChatMessages(mission.id);
       Di().getStore().dispatch(LoadChatThreads(chatThreads));
+    }
+  }
+
+  Future<void> _fetchGallery() async {
+    final bool fetched =
+        Di().getStore().state.galleryState.galleryLoaded(mission.id);
+    if (!fetched) {
+      final GalleryView galleryView =
+          await Di().getGalleryRepository().getGallery(mission.id);
+      Di().getStore().dispatch(LoadGallery(galleryView));
     }
   }
 }

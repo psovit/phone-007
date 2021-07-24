@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
+import 'package:flutter_redux_setup/widgets/gallery.dart';
 
 class MissionOne extends StatefulWidget {
   static const String BACKGROUND_IMAGE = 'assets/images/gilberto-reyes.jpg';
@@ -96,7 +97,21 @@ class _MissionOneState extends State<MissionOne> {
                             size: 32,
                             color: Colors.white,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push<dynamic>(
+                              MaterialPageRoute<dynamic>(
+                                builder: (BuildContext context) => Gallery(
+                                  missionId: Di()
+                                          .getStore()
+                                          .state
+                                          .missionState
+                                          .getCurrentMission()
+                                          ?.id ??
+                                      -1,
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Text(

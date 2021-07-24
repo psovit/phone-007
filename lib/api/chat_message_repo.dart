@@ -86,22 +86,6 @@ class ChatMessageApi implements ChatMessageRepository {
         senderNumber: '',
         chatMessages: <ChatMessage>[],
       ),
-      // ChatThreadView(
-      //   1,
-      //   1,
-      //   '',
-      //   'Dad',
-      //   '🤣',
-      //   DateTime.now().subtract(const Duration(days: 1)),
-      // ),
-      // ChatThreadView(
-      //   1,
-      //   2,
-      //   '',
-      //   'Mom',
-      //   '🐻',
-      //   DateTime.now().subtract(const Duration(days: 1)),
-      // ),
     ];
     return chatMessages;
   }

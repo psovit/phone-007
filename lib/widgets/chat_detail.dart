@@ -20,11 +20,16 @@ class ChatDetail extends StatelessWidget {
         chatMessage.sentDate.toLocal(),
       ),
     );
-    print(groupedMessages.length);
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        title: Text(chatThreadView.senderName),
+        title: Text(
+          chatThreadView.senderName,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(10.0),
