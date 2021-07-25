@@ -1,6 +1,6 @@
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/core/exports.dart';
-import 'package:flutter_redux_setup/redux/gallery_state/gallery_state.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/core/exports.dart';
+import 'package:phone007/redux/gallery_state/gallery_state.dart';
 
 class LoadGallery {
   LoadGallery(this.galleryView);

@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/mission_state/actions/init_mission.dart';
-import 'package:flutter_redux_setup/screens/missions/mission_screen.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
-import 'package:flutter_redux_setup/widgets/exports.dart';
-import 'package:flutter_redux_setup/widgets/start_button.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/mission_state/actions/init_mission.dart';
+import 'package:phone007/screens/missions/mission_screen.dart';
+import 'package:phone007/utils/exports.dart';
+import 'package:phone007/widgets/exports.dart';
+import 'package:phone007/widgets/start_button.dart';
 
 class Introduction extends StatelessWidget {
   const Introduction({Key? key, required this.mission}) : super(key: key);

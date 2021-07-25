@@ -1,4 +1,4 @@
-import 'package:flutter_redux_setup/models/exports.dart';
+import 'package:phone007/models/exports.dart';
 
 abstract class GalleryRepository {
   Future<GalleryView> getGallery(int missionId);

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
-import 'package:flutter_redux_setup/widgets/exports.dart';
-import 'package:flutter_redux_setup/widgets/gallery.dart';
-import 'package:flutter_redux_setup/widgets/internet_browser.dart';
-import 'package:flutter_redux_setup/widgets/notes_list.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/utils/exports.dart';
+import 'package:phone007/widgets/exports.dart';
+import 'package:phone007/widgets/gallery.dart';
+import 'package:phone007/widgets/internet_browser.dart';
+import 'package:phone007/widgets/notes_list.dart';
 
 class MissionScreen extends StatefulWidget {
   const MissionScreen({Key? key, required this.mission}) : super(key: key);

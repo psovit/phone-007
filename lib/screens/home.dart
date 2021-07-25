@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_setup/models/mission.dart';
-import 'package:flutter_redux_setup/redux/app_state.dart';
-import 'package:flutter_redux_setup/redux/mission_state/actions/export.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
-import 'package:flutter_redux_setup/widgets/exports.dart';
+import 'package:phone007/models/mission.dart';
+import 'package:phone007/redux/app_state.dart';
+import 'package:phone007/redux/mission_state/actions/export.dart';
+import 'package:phone007/utils/exports.dart';
+import 'package:phone007/widgets/exports.dart';
 import 'package:redux/redux.dart';
 
 class Home extends StatefulWidget {

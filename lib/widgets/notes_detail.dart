@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
+import 'package:phone007/models/exports.dart';
 
 class NotesDetail extends StatelessWidget {
   const NotesDetail(this.noteItemView);

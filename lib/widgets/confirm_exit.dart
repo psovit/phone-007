@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
+import 'package:phone007/utils/exports.dart';
 
 class ConfirmExit extends StatelessWidget {
   @override

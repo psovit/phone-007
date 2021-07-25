@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/utils/app_colors.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/utils/app_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:collection/collection.dart' as collection;
 import 'package:timeago/timeago.dart' as timeago;

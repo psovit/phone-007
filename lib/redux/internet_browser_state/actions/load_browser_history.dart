@@ -1,6 +1,6 @@
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/core/exports.dart';
-import 'package:flutter_redux_setup/redux/internet_browser_state/internet_browser_state.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/core/exports.dart';
+import 'package:phone007/redux/internet_browser_state/internet_browser_state.dart';
 
 class LoadBrowserHistory {
   LoadBrowserHistory(this.browserHistoryView);

@@ -1,6 +1,6 @@
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/chat_message_state/chat_message_state.dart';
-import 'package:flutter_redux_setup/redux/core/exports.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/chat_message_state/chat_message_state.dart';
+import 'package:phone007/redux/core/exports.dart';
 
 class LoadChatThreads {
   LoadChatThreads(this.chatThreads);

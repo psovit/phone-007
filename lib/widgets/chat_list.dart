@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/app_state.dart';
-import 'package:flutter_redux_setup/utils/app_colors.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
-import 'package:flutter_redux_setup/widgets/chat_detail.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/app_state.dart';
+import 'package:phone007/utils/app_colors.dart';
+import 'package:phone007/utils/exports.dart';
+import 'package:phone007/widgets/chat_detail.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:redux/redux.dart';
 

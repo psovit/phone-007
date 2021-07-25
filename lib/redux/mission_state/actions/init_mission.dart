@@ -1,12 +1,12 @@
-import 'package:flutter_redux_setup/redux/chat_message_state/actions/exports.dart';
-import 'package:flutter_redux_setup/redux/gallery_state/actions/exports.dart';
-import 'package:flutter_redux_setup/redux/internet_browser_state/actions/load_browser_history.dart';
-import 'package:flutter_redux_setup/redux/notes_state/actions/load_notes.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
+import 'package:phone007/redux/chat_message_state/actions/exports.dart';
+import 'package:phone007/redux/gallery_state/actions/exports.dart';
+import 'package:phone007/redux/internet_browser_state/actions/load_browser_history.dart';
+import 'package:phone007/redux/notes_state/actions/load_notes.dart';
+import 'package:phone007/utils/exports.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/app_state.dart';
-import 'package:flutter_redux_setup/redux/core/exports.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/app_state.dart';
+import 'package:phone007/redux/core/exports.dart';
 
 class InitMission extends ThunkActionClass<AppState> {
   InitMission(this.mission);

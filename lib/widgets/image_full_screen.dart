@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/utils/app_colors.dart';
+import 'package:phone007/utils/app_colors.dart';
 
 class ImageFullScreen extends StatefulWidget {
   const ImageFullScreen({required this.child});

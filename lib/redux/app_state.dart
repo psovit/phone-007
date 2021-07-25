@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/redux/chat_message_state/chat_message_state.dart';
-import 'package:flutter_redux_setup/redux/gallery_state/gallery_state.dart';
-import 'package:flutter_redux_setup/redux/internet_browser_state/internet_browser_state.dart';
-import 'package:flutter_redux_setup/redux/mission_state/mission_state.dart';
-import 'package:flutter_redux_setup/redux/notes_state/notes_state.dart';
+import 'package:phone007/redux/chat_message_state/chat_message_state.dart';
+import 'package:phone007/redux/gallery_state/gallery_state.dart';
+import 'package:phone007/redux/internet_browser_state/internet_browser_state.dart';
+import 'package:phone007/redux/mission_state/mission_state.dart';
+import 'package:phone007/redux/notes_state/notes_state.dart';
 
 @immutable
 class AppState {

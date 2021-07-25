@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/mission_state/actions/export.dart';
-import 'package:flutter_redux_setup/screens/missions/introduction.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/mission_state/actions/export.dart';
+import 'package:phone007/screens/missions/introduction.dart';
+import 'package:phone007/utils/exports.dart';
 
 class MissionCard extends StatelessWidget {
   const MissionCard({

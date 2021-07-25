@@ -1,4 +1,4 @@
-import 'package:flutter_redux_setup/models/enums.dart';
+import 'package:phone007/models/enums.dart';
 
 class Mission {
   Mission(

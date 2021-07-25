@@ -1,5 +1,5 @@
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/utils/exports.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/utils/exports.dart';
 
 abstract class AnswerRepository {
   Future<AnswerResultView> checkAnswer(int missionId, String answerText);

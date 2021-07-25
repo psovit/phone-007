@@ -1,6 +1,6 @@
-import 'package:flutter_redux_setup/models/exports.dart';
-import 'package:flutter_redux_setup/redux/core/exports.dart';
-import 'package:flutter_redux_setup/redux/notes_state/notes_state.dart';
+import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/core/exports.dart';
+import 'package:phone007/redux/notes_state/notes_state.dart';
 
 class LoadNotes {
   LoadNotes(this.notesView);
