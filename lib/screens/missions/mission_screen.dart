@@ -3,6 +3,7 @@ import 'package:flutter_redux_setup/models/exports.dart';
 import 'package:flutter_redux_setup/utils/exports.dart';
 import 'package:flutter_redux_setup/widgets/exports.dart';
 import 'package:flutter_redux_setup/widgets/gallery.dart';
+import 'package:flutter_redux_setup/widgets/internet_browser.dart';
 import 'package:flutter_redux_setup/widgets/notes_list.dart';
 
 class MissionScreen extends StatefulWidget {
@@ -122,44 +123,9 @@ class _MissionScreenState extends State<MissionScreen> {
                     ],
                   ),
                   const SizedBox(width: 32),
-                  !widget.mission.hasNotes
-                      ? const SizedBox()
-                      : Column(
-                          children: <Widget>[
-                            Container(
-                              decoration: const BoxDecoration(
-                                color: AppColors.yellow,
-                                shape: BoxShape.circle,
-                              ),
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.notes_outlined,
-                                  size: 32,
-                                  color: AppColors.black,
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).push<dynamic>(
-                                    MaterialPageRoute<dynamic>(
-                                      builder: (BuildContext context) =>
-                                          NotesList(
-                                        missionId: widget.mission.id,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            const Text(
-                              'Notes',
-                              style: TextStyle(
-                                fontFamily: 'Caveat',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.black,
-                              ),
-                            )
-                          ],
-                        ),
+                  _notes(),
+                  const SizedBox(width: 32),
+                  _internetBrowser(),
                 ],
               ),
             ),
@@ -214,6 +180,88 @@ class _MissionScreenState extends State<MissionScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _notes() {
+    if (!widget.mission.hasNotes) {
+      return const SizedBox();
+    }
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            color: AppColors.yellow,
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            icon: const Icon(
+              Icons.notes_outlined,
+              size: 32,
+              color: AppColors.black,
+            ),
+            onPressed: () {
+              Navigator.of(context).push<dynamic>(
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => NotesList(
+                    missionId: widget.mission.id,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        const Text(
+          'Notes',
+          style: TextStyle(
+            fontFamily: 'Caveat',
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: AppColors.black,
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _internetBrowser() {
+    if (!widget.mission.hasInternetBrowser) {
+      return const SizedBox();
+    }
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            color: AppColors.gray16,
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            icon: Icon(
+              Icons.wifi,
+              size: 32,
+              color: AppColors.blue400,
+            ),
+            onPressed: () {
+              Navigator.of(context).push<dynamic>(
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => InternetBrowser(
+                    missionId: widget.mission.id,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        Text(
+          'Internet',
+          style: TextStyle(
+            fontFamily: 'Caveat',
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: AppColors.blue400,
+          ),
+        )
+      ],
     );
   }
 

@@ -26,7 +26,7 @@ class MissionApi implements MissionRepository {
         MissionStatus.completed,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
         '',
-        'Lakhepati Marg 582/76',
+        '126 Main Road, Lakeside Rd, Pokhara 33700',
         hasNotes: true,
         hasInternetBrowser: true,
       ),

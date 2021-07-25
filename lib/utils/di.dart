@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_redux_setup/api/answer_repo.dart';
 import 'package:flutter_redux_setup/api/chat_message_repo.dart';
 import 'package:flutter_redux_setup/api/gallery_repo.dart';
+import 'package:flutter_redux_setup/api/internet_browser_api.dart';
 import 'package:flutter_redux_setup/api/mission_repo.dart';
 import 'package:flutter_redux_setup/api/notes_repo.dart';
 import 'package:flutter_redux_setup/redux/app_state.dart';
@@ -64,5 +65,9 @@ class Di {
 
   NotesRepository getNotesRepository() {
     return NotesApi();
+  }
+
+  InternetBrowserRepository getInternetBrowserRepository() {
+    return InternetBrowserApi();
   }
 }

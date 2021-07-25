@@ -7,7 +7,6 @@ abstract class ChatMessageRepository {
 class ChatMessageApi implements ChatMessageRepository {
   @override
   Future<List<ChatThreadView>> getChatMessages(int missionId) async {
-    print(missionId);
     if (missionId != 1) {
       return <ChatThreadView>[];
     }
