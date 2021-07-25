@@ -4,6 +4,7 @@ import 'package:phone007/utils/exports.dart';
 import 'package:phone007/widgets/exports.dart';
 import 'package:phone007/widgets/gallery.dart';
 import 'package:phone007/widgets/internet_browser.dart';
+import 'package:phone007/widgets/mission_complete.dart';
 import 'package:phone007/widgets/notes_list.dart';
 
 class MissionScreen extends StatefulWidget {
@@ -381,9 +382,22 @@ class _MissionScreenState extends State<MissionScreen> {
     } else {
       setState(() {
         _checkingAnswer = false;
-        _answerErrorText = answerResultView.hintText;
+        _answerErrorText = '';
       });
+      Navigator.pop(context);
+      await _completedMission();
+      Navigator.of(context).popUntil((_) => _.settings.name == '/');
     }
+  }
+
+  Future<bool?> _completedMission() async {
+    return await showDialog<bool>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return MissionComplete();
+      },
+    );
   }
 
   Future<bool?> _confirmExit() async {
