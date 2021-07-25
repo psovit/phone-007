@@ -21,9 +21,6 @@ class ChatList extends StatelessWidget {
               .getChatThreadsForMission(missionId);
         },
         builder: (_, List<ChatThreadView> chatThreads) {
-          if (chatThreads.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
-          }
           return Column(
             children: <Widget>[
               Container(

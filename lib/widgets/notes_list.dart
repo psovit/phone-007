@@ -2,68 +2,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_setup/models/exports.dart';
 import 'package:flutter_redux_setup/redux/app_state.dart';
-import 'package:flutter_redux_setup/widgets/image_full_screen.dart';
+import 'package:flutter_redux_setup/utils/app_colors.dart';
+import 'package:flutter_redux_setup/widgets/notes_detail.dart';
 import 'package:redux/redux.dart';
 
-class Gallery extends StatelessWidget {
-  const Gallery({Key? key, required this.missionId}) : super(key: key);
+class NotesList extends StatelessWidget {
+  const NotesList({required this.missionId});
   final int missionId;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Gallery',
+          'Notes',
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),
       ),
-      body: StoreConnector<AppState, GalleryView?>(
+      body: StoreConnector<AppState, NotesView?>(
         converter: (Store<AppState> store) {
-          return store.state.galleryState.getGalleryForMission(missionId);
+          return store.state.notesState.getNotesForMission(missionId);
         },
-        builder: (_, GalleryView? galleryView) {
-          if (galleryView == null) {
+        builder: (_, NotesView? notesView) {
+          if (notesView == null) {
             return const Center(child: CircularProgressIndicator());
           }
-          if (galleryView.galleryItems.isEmpty) {
+          if (notesView.notes.isEmpty) {
             return const Center(
               child: Text(
-                'No photos or videos here.',
+                'No notes here.',
                 style: TextStyle(fontSize: 22),
               ),
             );
           }
           return Container(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(12.0),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 150,
-                childAspectRatio: 1,
+                maxCrossAxisExtent: 200,
+                childAspectRatio: 1.9,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
               ),
-              itemCount: galleryView.galleryItems.length,
+              itemCount: notesView.notes.length,
               itemBuilder: (BuildContext ctx, int index) {
-                final GalleryItemView galleryItemView =
-                    galleryView.galleryItems[index];
+                final NoteItemView noteItemView = notesView.notes[index];
                 final Widget imageChild = Container(
-                  decoration: new BoxDecoration(
-                    image: new DecorationImage(
-                      image: new AssetImage(galleryItemView.itemUrl),
-                      fit: BoxFit.contain,
-                    ),
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: const BoxDecoration(
+                    color: AppColors.gray16,
+                    borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        noteItemView.title,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        noteItemView.body,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 );
                 return GestureDetector(
                   onTap: () {
                     Navigator.of(context).push<dynamic>(
                       MaterialPageRoute<dynamic>(
-                        builder: (BuildContext context) => ImageFullScreen(
-                          child: imageChild,
+                        builder: (BuildContext context) => NotesDetail(
+                          noteItemView,
                         ),
                       ),
                     );

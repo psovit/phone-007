@@ -7,6 +7,13 @@ abstract class GalleryRepository {
 class GalleryApi implements GalleryRepository {
   @override
   Future<GalleryView> getGallery(int missionId) async {
+    if (missionId != 1) {
+      return GalleryView(
+        galleryId: 2,
+        missionId: missionId,
+        galleryItems: <GalleryItemView>[],
+      );
+    }
     return GalleryView(
       galleryId: 1,
       missionId: missionId,
