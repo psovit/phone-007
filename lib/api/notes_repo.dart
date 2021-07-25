@@ -20,8 +20,9 @@ class NotesApi implements NotesRepository {
         ),
         NoteItemView(
           noteId: 2,
-          title: 'What is life?',
-          body: 'Should I be more serious or less? Should I be happy or...',
+          title: 'Dear Parents',
+          body:
+              'Do not try to look for me. I am going on a long long journey. Not sure when I will return but remember I will always love you both. Take care.',
           createdAt: DateTime.now(),
           missionId: missionId,
         ),

@@ -59,6 +59,15 @@ class MissionCard extends StatelessWidget {
       child: InkWell(
         child: card,
         onTap: () {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          if (mission.status == MissionStatus.locked) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('This mission is locked at the moment'),
+              ),
+            );
+            return;
+          }
           Di().getStore().dispatch(SetCurrentMission(mission));
           Navigator.of(context, rootNavigator: true).push<dynamic>(
             MaterialPageRoute<dynamic>(

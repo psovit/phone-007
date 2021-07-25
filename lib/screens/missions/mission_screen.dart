@@ -130,7 +130,8 @@ class _MissionScreenState extends State<MissionScreen> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              color: AppColors.green,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -147,15 +148,6 @@ class _MissionScreenState extends State<MissionScreen> {
                           Navigator.pop(context);
                         }
                       },
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.circle_outlined,
-                        size: 32,
-                      ),
-                      onPressed: () {},
                     ),
                   ),
                   Container(
@@ -298,7 +290,10 @@ class _MissionScreenState extends State<MissionScreen> {
                           ? const SizedBox()
                           : Text(
                               _answerErrorText,
-                              style: const TextStyle(color: AppColors.red),
+                              style: const TextStyle(
+                                color: AppColors.red,
+                                fontSize: 16.0,
+                              ),
                             ),
                   TextField(
                     controller: _textEditingController,

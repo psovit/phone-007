@@ -23,7 +23,7 @@ class AnswerApi implements AnswerRepository {
     }
 
     if (answer.toLowerCase() == answerText.toLowerCase()) {
-      return AnswerResultView(true, 'You got it!');
+      return AnswerResultView(true, 'Congratulations 🎉 You got it! 🎉');
     }
     bool almostThere = false;
     String almostThereText = '';
@@ -38,7 +38,7 @@ class AnswerApi implements AnswerRepository {
     String hint = 'This answer does not look right.';
 
     if (almostThere) {
-      hint = '$almostThereText is quite close but not close enought!';
+      hint = '$almostThereText is quite close but not close enough!';
     }
 
     return AnswerResultView(false, hint);
