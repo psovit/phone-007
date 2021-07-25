@@ -23,11 +23,16 @@ class GalleryApi implements GalleryRepository {
         ),
         GalleryItemView(
           id: 3,
+          itemUrl: 'assets/images/ghar.jpg',
+          createdAt: DateTime.now().subtract(const Duration(days: 2)),
+        ),
+        GalleryItemView(
+          id: 4,
           itemUrl: 'assets/images/hamro-jatra.jpg',
           createdAt: DateTime.now().subtract(const Duration(days: 2)),
         ),
         GalleryItemView(
-          id: 3,
+          id: 5,
           itemUrl: 'assets/images/prateek-katyal.jpg',
           createdAt: DateTime.now().subtract(const Duration(days: 2)),
         ),

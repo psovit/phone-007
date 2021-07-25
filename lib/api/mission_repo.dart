@@ -14,6 +14,8 @@ class MissionApi implements MissionRepository {
         'assets/images/daniel-eliashevsky.jpg',
         MissionStatus.inProgress,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
+        'Type the phone owner\'s adress below, and we will check it for you.',
+        'Dhumbarahi Marg 582/76',
       ),
       Mission(
         2,
@@ -21,6 +23,8 @@ class MissionApi implements MissionRepository {
         'assets/images/djordje-cvetkovic.jpg',
         MissionStatus.completed,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
+        '',
+        'Lakhepati Marg 582/76',
       ),
       Mission(
         3,
@@ -28,6 +32,8 @@ class MissionApi implements MissionRepository {
         'assets/images/antonio-sokic.jpg',
         MissionStatus.completed,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
+        '',
+        'Lakhepati Marg 582/76',
       ),
       Mission(
         4,
@@ -35,6 +41,8 @@ class MissionApi implements MissionRepository {
         'assets/images/daria-sannikova.jpg',
         MissionStatus.inProgress,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
+        '',
+        'Lakhepati Marg 582/76',
       ),
     ];
   }

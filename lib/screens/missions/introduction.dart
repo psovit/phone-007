@@ -63,7 +63,9 @@ class Introduction extends StatelessWidget {
               _loadMissionObjects();
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
-                  builder: (BuildContext context) => MissionOne(),
+                  builder: (BuildContext context) => MissionOne(
+                    mission: mission,
+                  ),
                 ),
               );
             }),

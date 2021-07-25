@@ -55,6 +55,7 @@ flutter:
     - assets/images/gilberto-reyes.jpg
     - assets/images/prateek-katyal.jpg
     - assets/images/hamro-jatra.jpg
+    - assets/images/ghar.jpg
 
   fonts:
     - family: Caveat

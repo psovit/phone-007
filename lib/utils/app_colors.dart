@@ -8,9 +8,12 @@ class AppColors {
   static const Color black60 = const Color(0x99000000);
   static const Color black40 = const Color(0x66000000);
 
-  static Color message = Colors.blue[400] as Color;
+  static Color blue400 = Colors.blue[400] as Color;
   static Color gallery = Colors.red[400] as Color;
 
   static const Color gray16 = const Color.fromRGBO(0, 0, 0, 0.16);
   static const Color gray4 = const Color.fromRGBO(0, 0, 0, 0.04);
+  static const Color yellow = Colors.yellow;
+  static const Color red = Colors.red;
+  static const Color green = Colors.green;
 }

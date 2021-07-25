@@ -46,7 +46,7 @@ class Gallery extends StatelessWidget {
                   decoration: new BoxDecoration(
                     image: new DecorationImage(
                       image: new AssetImage(galleryItemView.itemUrl),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 );

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_redux_setup/api/answer_repo.dart';
 import 'package:flutter_redux_setup/api/chat_message_repo.dart';
 import 'package:flutter_redux_setup/api/gallery_repo.dart';
 import 'package:flutter_redux_setup/api/mission_repo.dart';
@@ -54,5 +55,9 @@ class Di {
 
   GalleryRepository getGalleryRepository() {
     return GalleryApi();
+  }
+
+  AnswerRepository getAnswerRepository() {
+    return AnswerApi();
   }
 }

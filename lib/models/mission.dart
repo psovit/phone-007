@@ -6,7 +6,9 @@ class Mission {
     this.title,
     this.image,
     this.status,
-    this.description, {
+    this.description,
+    this.questionText,
+    this.answer, {
     this.hasChatMessages = true,
     this.hasGallery = true,
     this.hasInternetBrowser = false,
@@ -19,4 +21,6 @@ class Mission {
   final bool hasChatMessages;
   final bool hasGallery;
   final bool hasInternetBrowser;
+  final String questionText;
+  final String answer;
 }
