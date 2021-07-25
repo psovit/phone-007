@@ -369,8 +369,9 @@ class _MissionScreenState extends State<MissionScreen> {
     setState(() {
       _checkingAnswer = true;
     });
-    final AnswerResultView answerResultView =
-        await Di().getAnswerRepository().checkAnswer(widget.mission.id, answer);
+    final AnswerResultView answerResultView = await Di()
+        .getAnswerRepository()
+        .checkAnswer(widget.mission.id, answer.trim());
     setState(() {});
     if (!answerResultView.correctAnswer) {
       setState(() {

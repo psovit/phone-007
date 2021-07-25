@@ -9,7 +9,7 @@ class Mission {
     this.status,
     this.description,
     this.questionText,
-    this.answer, {
+    this.possibleAnswers, {
     this.hasChatMessages = true,
     this.hasGallery = true,
     this.hasInternetBrowser = false,
@@ -25,6 +25,6 @@ class Mission {
   final bool hasGallery;
   final bool hasInternetBrowser;
   final String questionText;
-  final String answer;
+  final List<String> possibleAnswers;
   final bool hasNotes;
 }

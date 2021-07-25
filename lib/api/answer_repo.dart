@@ -16,20 +16,35 @@ class AnswerApi implements AnswerRepository {
   }
 
   AnswerResultView _checkResultForMission(String answerText) {
-    final String answer =
-        Di().getStore().state.missionState.getCurrentMission()?.answer ?? '';
-    if (StringUtils.isNullOrEmpty(answer)) {
+    final List<String> possibleAnswers = Di()
+            .getStore()
+            .state
+            .missionState
+            .getCurrentMission()
+            ?.possibleAnswers ??
+        <String>[];
+    if (possibleAnswers.isEmpty) {
       throw Exception('Current Mission not found!');
     }
 
-    if (answer.toLowerCase() == answerText.toLowerCase()) {
+    bool foundAnswer = false;
+
+    possibleAnswers.forEach((_) {
+      if (_.toLowerCase() == answerText.replaceAll(',', '').toLowerCase()) {
+        foundAnswer = true;
+        return;
+      }
+    });
+
+    if (foundAnswer) {
       return AnswerResultView(true, 'Congratulations 🎉 You got it! 🎉');
     }
+
     bool almostThere = false;
     String almostThereText = '';
     answerText.split(' ').forEach((_) {
       if (!StringUtils.isNullOrEmpty(_) &&
-          answer.toLowerCase().contains(_.toLowerCase())) {
+          possibleAnswers.join(' ').toLowerCase().contains(_.toLowerCase())) {
         almostThere = true;
         almostThereText = _;
         return;

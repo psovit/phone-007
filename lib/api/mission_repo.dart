@@ -16,7 +16,10 @@ class MissionApi implements MissionRepository {
         MissionStatus.notStarted,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
         'Type the phone owner\'s adress below, and we will check it for you.',
-        'Dhumbarahi Marg 582/76',
+        <String>[
+          'Dhumbarahi Marg 582/76',
+          '582/76 Dhumbarahi Marg',
+        ],
       ),
       Mission(
         2,
@@ -26,7 +29,12 @@ class MissionApi implements MissionRepository {
         MissionStatus.notStarted,
         "Your cousin's daughter, Anite, disappeared two nights ago. Her parents believe she ran away from home after her boyfried broke up with her. \nShe left her phone behind, but it looks like she deleted everything from it. \n Can you check if there are any clues left on the device that can shed some light on Anita's location?",
         'Help her parents find the daughter. Any possible leads?',
-        '126 Main Road, Lakeside Rd, Pokhara 33700',
+        <String>[
+          '126 Main Road Lakeside Rd Pokhara 33700',
+          '126 Main Road Lakeside Rd Lake View Resort Address',
+          'Lake View Resort Address 126 Main Road Lakeside Rd',
+          'Lake View Resort Address 126 Main Road Lakeside Rd Pokhara 33700',
+        ],
         hasNotes: true,
         hasInternetBrowser: true,
       ),
@@ -38,7 +46,7 @@ class MissionApi implements MissionRepository {
         MissionStatus.locked,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
         '',
-        'Lakhepati Marg 582/76',
+        <String>[],
       ),
       Mission(
         4,
@@ -48,7 +56,7 @@ class MissionApi implements MissionRepository {
         MissionStatus.locked,
         "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
         '',
-        'Lakhepati Marg 582/76',
+        <String>[],
       ),
     ];
   }
