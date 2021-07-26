@@ -41,9 +41,9 @@ class _MissionScreenState extends State<MissionScreen> {
         );
       }
       if (mission.screenLocked) {
-        return const LockedScreen(
-          hintText: 'Fibonnaci 0-1',
-          validCode: '0112',
+        return LockedScreen(
+          hintText: mission.lockScreenView!.hintText,
+          validCode: mission.lockScreenView!.validCode,
         );
       }
       return Scaffold(
