@@ -58,6 +58,9 @@ flutter:
     - assets/images/ghar.jpg
     - assets/images/mehendi.jpg
     - assets/images/tima-miroshnichenko.jpg
+    - assets/images/arianna-jada.jpg
+    - assets/images/koolshooters.jpg
+    - assets/images/mikhail-nilov.jpg
 
   fonts:
     - family: Caveat
