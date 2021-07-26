@@ -57,6 +57,7 @@ flutter:
     - assets/images/hamro-jatra.jpg
     - assets/images/ghar.jpg
     - assets/images/mehendi.jpg
+    - assets/images/tima-miroshnichenko.jpg
 
   fonts:
     - family: Caveat

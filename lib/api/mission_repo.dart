@@ -40,13 +40,14 @@ class MissionApi implements MissionRepository {
       ),
       Mission(
         3,
-        '3. Grandfather\'s secret',
+        '3. Prevent Robbery',
         'assets/images/antonio-sokic.jpg',
-        'assets/images/gilberto-reyes.jpg',
-        MissionStatus.locked,
-        "This one is simple. You sat down on a bench and found a phone. No one is around, so it is probably lost...\n\nFortunately, the phone is unlocked!\n\nLet's play nice this time... Your mission is to find the owner's address so you can return it.",
+        'assets/images/tima-miroshnichenko.jpg',
+        MissionStatus.notStarted,
+        'There has been an increase in robberies in your town. The most recent robbery happened yesterday at Mr. Jagannath’s house. They took all the cash and other valuables from the house. \nHowever, one of the thieves forgot his phone at the scene and now the local police have it. \n\nCan you help the police to catch the thieves? When and where is their next robbery going to happen?',
         '',
         <String>[],
+        screenLocked: true,
       ),
       Mission(
         4,

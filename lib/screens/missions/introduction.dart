@@ -62,9 +62,7 @@ class Introduction extends StatelessWidget {
               Di().getStore().dispatch(InitMission(mission));
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
-                  builder: (BuildContext context) => MissionScreen(
-                    mission: mission,
-                  ),
+                  builder: (BuildContext context) => MissionScreen(),
                 ),
               );
             }),

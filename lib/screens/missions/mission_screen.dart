@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/app_state.dart';
 import 'package:phone007/utils/exports.dart';
 import 'package:phone007/widgets/exports.dart';
 import 'package:phone007/widgets/gallery.dart';
 import 'package:phone007/widgets/internet_browser.dart';
+import 'package:phone007/widgets/locked_screen.dart';
 import 'package:phone007/widgets/mission_complete.dart';
 import 'package:phone007/widgets/notes_list.dart';
+import 'package:redux/redux.dart';
 
 class MissionScreen extends StatefulWidget {
-  const MissionScreen({Key? key, required this.mission}) : super(key: key);
-  final Mission mission;
-
   @override
   _MissionScreenState createState() => _MissionScreenState();
 }
@@ -30,154 +31,170 @@ class _MissionScreenState extends State<MissionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _key,
-      drawer: _drawer(),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(widget.mission.backgroundImage),
-            fit: BoxFit.cover,
+    return StoreConnector<AppState, Mission?>(
+        converter: (Store<AppState> store) {
+      return store.state.missionState.getCurrentMission();
+    }, builder: (_, Mission? mission) {
+      if (mission == null) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      if (mission.screenLocked) {
+        return const LockedScreen(
+          hintText: 'Fibonnaci 0-1',
+          validCode: '0112',
+        );
+      }
+      return Scaffold(
+        key: _key,
+        drawer: _drawer(mission),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(mission.backgroundImage),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 60,
+                  left: 24.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.blue400,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.chat_rounded,
+                              size: 32,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push<dynamic>(
+                                MaterialPageRoute<dynamic>(
+                                  builder: (BuildContext context) => ChatList(
+                                    missionId: mission.id,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        Text(
+                          'Messages',
+                          style: TextStyle(
+                            fontFamily: 'Caveat',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.blue400,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(width: 32),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.gallery,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.photo,
+                              size: 32,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push<dynamic>(
+                                MaterialPageRoute<dynamic>(
+                                  builder: (BuildContext context) => Gallery(
+                                    missionId: mission.id,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        Text(
+                          'Gallery',
+                          style: TextStyle(
+                            fontFamily: 'Caveat',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.gallery,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(width: 32),
+                    _notes(mission),
+                    const SizedBox(width: 32),
+                    _internetBrowser(mission),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                color: AppColors.green,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          size: 32,
+                        ),
+                        onPressed: () async {
+                          final bool? confirmExit = await _confirmExit();
+
+                          if (confirmExit != null && confirmExit) {
+                            Navigator.pop(context);
+                          }
+                        },
+                      ),
+                    ),
+                    Container(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.flag_outlined,
+                          size: 32,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _textEditingController.text = '';
+                            _checkingAnswer = false;
+                            _answerErrorText = '';
+                          });
+                          _key.currentState!.openDrawer();
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(
-                top: 60,
-                left: 24.0,
-              ),
-              child: Row(
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.blue400,
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.chat_rounded,
-                            size: 32,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push<dynamic>(
-                              MaterialPageRoute<dynamic>(
-                                builder: (BuildContext context) => ChatList(
-                                  missionId: widget.mission.id,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        'Messages',
-                        style: TextStyle(
-                          fontFamily: 'Caveat',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.blue400,
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(width: 32),
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.gallery,
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.photo,
-                            size: 32,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push<dynamic>(
-                              MaterialPageRoute<dynamic>(
-                                builder: (BuildContext context) => Gallery(
-                                  missionId: widget.mission.id,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      Text(
-                        'Gallery',
-                        style: TextStyle(
-                          fontFamily: 'Caveat',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.gallery,
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(width: 32),
-                  _notes(),
-                  const SizedBox(width: 32),
-                  _internetBrowser(),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              color: AppColors.green,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        size: 32,
-                      ),
-                      onPressed: () async {
-                        final bool? confirmExit = await _confirmExit();
-
-                        if (confirmExit != null && confirmExit) {
-                          Navigator.pop(context);
-                        }
-                      },
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.flag_outlined,
-                        size: 32,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _textEditingController.text = '';
-                          _checkingAnswer = false;
-                          _answerErrorText = '';
-                        });
-                        _key.currentState!.openDrawer();
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+      );
+    });
   }
 
-  Widget _notes() {
-    if (!widget.mission.hasNotes) {
+  Widget _notes(Mission mission) {
+    if (!mission.hasNotes) {
       return const SizedBox();
     }
     return Column(
@@ -197,7 +214,7 @@ class _MissionScreenState extends State<MissionScreen> {
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
                   builder: (BuildContext context) => NotesList(
-                    missionId: widget.mission.id,
+                    missionId: mission.id,
                   ),
                 ),
               );
@@ -217,8 +234,8 @@ class _MissionScreenState extends State<MissionScreen> {
     );
   }
 
-  Widget _internetBrowser() {
-    if (!widget.mission.hasInternetBrowser) {
+  Widget _internetBrowser(Mission mission) {
+    if (!mission.hasInternetBrowser) {
       return const SizedBox();
     }
     return Column(
@@ -238,7 +255,7 @@ class _MissionScreenState extends State<MissionScreen> {
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
                   builder: (BuildContext context) => InternetBrowser(
-                    missionId: widget.mission.id,
+                    missionId: mission.id,
                   ),
                 ),
               );
@@ -258,7 +275,7 @@ class _MissionScreenState extends State<MissionScreen> {
     );
   }
 
-  Widget _drawer() {
+  Widget _drawer(Mission mission) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -277,7 +294,7 @@ class _MissionScreenState extends State<MissionScreen> {
                     style: TextStyle(fontSize: 26),
                   ),
                   Text(
-                    widget.mission.questionText,
+                    mission.questionText,
                     style: const TextStyle(fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
@@ -314,7 +331,8 @@ class _MissionScreenState extends State<MissionScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: _checkingAnswer ? null : _checkAnswer,
+                    onPressed:
+                        _checkingAnswer ? null : () => _checkAnswer(mission),
                     child: const Text('Check Answer'),
                   ),
                 ],
@@ -360,7 +378,7 @@ class _MissionScreenState extends State<MissionScreen> {
     );
   }
 
-  Future<void> _checkAnswer() async {
+  Future<void> _checkAnswer(Mission mission) async {
     final String answer = _textEditingController.text;
     if (answer.isEmpty || answer == '') {
       setState(() {
@@ -370,9 +388,8 @@ class _MissionScreenState extends State<MissionScreen> {
     setState(() {
       _checkingAnswer = true;
     });
-    final AnswerResultView answerResultView = await Di()
-        .getAnswerRepository()
-        .checkAnswer(widget.mission.id, answer.trim());
+    final AnswerResultView answerResultView =
+        await Di().getAnswerRepository().checkAnswer(mission.id, answer.trim());
     setState(() {});
     if (!answerResultView.correctAnswer) {
       setState(() {

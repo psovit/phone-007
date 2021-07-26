@@ -14,6 +14,7 @@ class Mission {
     this.hasGallery = true,
     this.hasInternetBrowser = false,
     this.hasNotes = false,
+    this.screenLocked = false,
   });
   final int id;
   final String title;
@@ -27,4 +28,7 @@ class Mission {
   final String questionText;
   final List<String> possibleAnswers;
   final bool hasNotes;
+  bool screenLocked;
+
+  void unlockScreen() => screenLocked = false;
 }

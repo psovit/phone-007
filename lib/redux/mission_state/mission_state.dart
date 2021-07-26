@@ -27,4 +27,9 @@ class MissionState {
   Mission? getCurrentMission() {
     return _mission;
   }
+
+  MissionState unlockScreen() {
+    _mission?.unlockScreen();
+    return MissionState(_missions, _mission);
+  }
 }
