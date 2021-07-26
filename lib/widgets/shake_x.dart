@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 
 @immutable
 class ShakeWidget extends StatelessWidget {
-  final Duration duration;
-  final double deltaX;
-  final Widget child;
-  final Curve curve;
-
   const ShakeWidget({
     Key? key,
     this.duration = const Duration(milliseconds: 500),
@@ -14,6 +9,11 @@ class ShakeWidget extends StatelessWidget {
     this.curve = Curves.bounceOut,
     required this.child,
   }) : super(key: key);
+
+  final Duration duration;
+  final double deltaX;
+  final Widget child;
+  final Curve curve;
 
   /// convert 0-1 to 0-1-0
   double shake(double animation) =>
@@ -23,10 +23,10 @@ class ShakeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
       key: key,
-      tween: Tween(begin: 0.0, end: 1.0),
+      tween: Tween<double>(begin: 0.0, end: 1.0),
       duration: duration,
-      builder: (context, animation, child) => Transform.translate(
-        offset: Offset(deltaX * shake(animation), 0),
+      builder: (_, __, Widget? child) => Transform.translate(
+        offset: Offset(deltaX * shake(__), 0),
         child: child,
       ),
       child: child,
