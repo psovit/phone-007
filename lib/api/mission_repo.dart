@@ -49,7 +49,7 @@ class MissionApi implements MissionRepository {
         <String>[],
         screenLocked: true,
         lockScreenView: LockScreenView('Fibonnaci 0-1', '0112'),
-        hasVault: true,
+        hasSafe: true,
       ),
       Mission(
         4,

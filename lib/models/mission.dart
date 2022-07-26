@@ -16,7 +16,7 @@ class Mission {
     this.hasNotes = false,
     this.screenLocked = false,
     this.lockScreenView,
-    this.hasVault = false,
+    this.hasSafe = false,
   });
   final int id;
   final String title;
@@ -27,7 +27,7 @@ class Mission {
   final bool hasChatMessages;
   final bool hasGallery;
   final bool hasInternetBrowser;
-  final bool hasVault;
+  final bool hasSafe;
   final String questionText;
   final List<String> possibleAnswers;
   final bool hasNotes;

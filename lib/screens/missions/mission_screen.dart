@@ -9,6 +9,7 @@ import 'package:phone007/widgets/internet_browser.dart';
 import 'package:phone007/widgets/locked_screen.dart';
 import 'package:phone007/widgets/mission_complete.dart';
 import 'package:phone007/widgets/notes_list.dart';
+import 'package:phone007/widgets/safe/safe_widget.dart';
 import 'package:redux/redux.dart';
 
 class MissionScreen extends StatefulWidget {
@@ -92,13 +93,14 @@ class _MissionScreenState extends State<MissionScreen> {
                             },
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Messages',
                           style: TextStyle(
+                            backgroundColor: AppColors.black,
                             fontFamily: 'Caveat',
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.blue400,
+                            color: AppColors.white,
                           ),
                         )
                       ],
@@ -143,6 +145,8 @@ class _MissionScreenState extends State<MissionScreen> {
                     _notes(mission),
                     const SizedBox(width: 32),
                     _internetBrowser(mission),
+                    const SizedBox(width: 32),
+                    _vault(mission),
                   ],
                 ),
               ),
@@ -224,10 +228,11 @@ class _MissionScreenState extends State<MissionScreen> {
         const Text(
           'Notes',
           style: TextStyle(
+            backgroundColor: AppColors.black,
             fontFamily: 'Caveat',
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: AppColors.black,
+            color: AppColors.white,
           ),
         )
       ],
@@ -262,13 +267,56 @@ class _MissionScreenState extends State<MissionScreen> {
             },
           ),
         ),
-        Text(
+        const Text(
           'Internet',
           style: TextStyle(
+            backgroundColor: AppColors.black,
             fontFamily: 'Caveat',
             fontSize: 18,
             fontWeight: FontWeight.w500,
-            color: AppColors.blue400,
+            color: AppColors.white,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _vault(Mission mission) {
+    if (!mission.hasSafe) {
+      return const SizedBox();
+    }
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            color: AppColors.gray16,
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            icon: const Icon(
+              Icons.lock,
+              size: 32,
+              color: AppColors.red,
+            ),
+            onPressed: () {
+              Navigator.of(context).push<dynamic>(
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => SafeWidget(
+                    missionId: mission.id,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        const Text(
+          'Safe',
+          style: TextStyle(
+            backgroundColor: AppColors.black,
+            fontFamily: 'Caveat',
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: AppColors.white,
           ),
         )
       ],

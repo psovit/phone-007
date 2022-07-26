@@ -9,10 +9,12 @@ class MissionCard extends StatelessWidget {
     Key? key,
     required this.mission,
     required this.cardColor,
+    this.useNetworkImage = false,
   }) : super(key: key);
 
   final Mission mission;
   final Color cardColor;
+  final bool useNetworkImage;
   @override
   Widget build(BuildContext context) {
     final Size mediaSize = MediaQuery.of(context).size;
@@ -36,11 +38,17 @@ class MissionCard extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
-              mission.image,
-              height: 120,
-              fit: BoxFit.fill,
-            ),
+            child: useNetworkImage
+                ? Image.network(
+                    'https://link-images-staging.s3.amazonaws.com/ea2f376860a94dafba5ec0140628b352',
+                    height: 120,
+                    fit: BoxFit.fill,
+                  )
+                : Image.asset(
+                    mission.image,
+                    height: 120,
+                    fit: BoxFit.fill,
+                  ),
           ),
           const SizedBox(height: 10.0),
           Text(

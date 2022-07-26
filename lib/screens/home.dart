@@ -94,6 +94,7 @@ class _HomeState extends State<Home> {
                         cardColor:
                             index % 3 == 0 ? AppColors.gray16 : AppColors.white,
                         mission: missions[index],
+                        useNetworkImage: index == 3,
                       );
                     },
                   ),
