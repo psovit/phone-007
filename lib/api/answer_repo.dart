@@ -41,19 +41,18 @@ class AnswerApi implements AnswerRepository {
     }
 
     bool almostThere = false;
-    String almostThereText = '';
+
     answerText.split(' ').forEach((_) {
       if (!StringUtils.isNullOrEmpty(_) &&
           possibleAnswers.join(' ').toLowerCase().contains(_.toLowerCase())) {
         almostThere = true;
-        almostThereText = _;
         return;
       }
     });
     String hint = 'This answer does not look right.';
 
     if (almostThere) {
-      hint = '$almostThereText is quite close but not close enough!';
+      hint = '$answerText is quite close but not close enough!';
     }
 
     return AnswerResultView(false, hint);

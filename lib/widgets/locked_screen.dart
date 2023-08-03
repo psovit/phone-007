@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:phone007/redux/mission_state/actions/unlock_screen.dart';
@@ -46,6 +48,12 @@ class _LockedScreenState extends State<LockedScreen> {
       backgroundColor: AppColors.black,
       body: PageView(
         scrollDirection: Axis.vertical,
+        scrollBehavior: ScrollConfiguration.of(context).copyWith(
+          dragDevices: <PointerDeviceKind>{
+            PointerDeviceKind.touch,
+            PointerDeviceKind.mouse,
+          },
+        ),
         children: <Widget>[
           Container(
             child: Center(
@@ -53,7 +61,7 @@ class _LockedScreenState extends State<LockedScreen> {
                 widget.hintText,
                 style: Theme.of(context)
                     .textTheme
-                    .headline2
+                    .headlineMedium
                     ?.copyWith(color: AppColors.white),
               ),
             ),

@@ -22,6 +22,7 @@ class _InternetBrowserState extends State<InternetBrowser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: StoreConnector<AppState, BrowserHistoryView?>(
         converter: (Store<AppState> store) {
           return store.state.internetBrowserState

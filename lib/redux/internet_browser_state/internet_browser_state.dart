@@ -1,5 +1,5 @@
-import 'package:phone007/models/exports.dart';
 import 'package:collection/collection.dart' as collection;
+import 'package:phone007/models/exports.dart';
 
 class InternetBrowserState {
   InternetBrowserState(

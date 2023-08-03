@@ -30,10 +30,7 @@ class MissionApi implements MissionRepository {
         "Your cousin's daughter, Anite, disappeared two nights ago. Her parents believe she ran away from home after her boyfried broke up with her. \nShe left her phone behind, but it looks like she deleted everything from it. \n Can you check if there are any clues left on the device that can shed some light on Anita's location?",
         'Help her parents find the daughter. Any possible leads?',
         <String>[
-          '126 Main Road Lakeside Rd Pokhara 33700',
-          '126 Main Road Lakeside Rd Lake View Resort Address',
-          'Lake View Resort Address 126 Main Road Lakeside Rd',
-          'Lake View Resort Address 126 Main Road Lakeside Rd Pokhara 33700',
+          'Lake View Resort Pokhara',
         ],
         hasNotes: true,
         hasInternetBrowser: true,

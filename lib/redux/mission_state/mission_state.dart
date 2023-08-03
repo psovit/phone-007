@@ -28,6 +28,13 @@ class MissionState {
     return _mission;
   }
 
+  Mission? getMissionById(int missionId) {
+    if (_missions.isEmpty) {
+      return null;
+    }
+    return _missions.firstWhere((_) => _.id == missionId, orElse: null);
+  }
+
   MissionState unlockScreen() {
     _mission?.unlockScreen();
     return MissionState(_missions, _mission);

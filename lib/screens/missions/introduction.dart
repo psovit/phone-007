@@ -1,19 +1,59 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:phone007/models/exports.dart';
+import 'package:phone007/redux/mission_state/actions/export.dart';
 import 'package:phone007/redux/mission_state/actions/init_mission.dart';
 import 'package:phone007/screens/missions/mission_screen.dart';
 import 'package:phone007/utils/exports.dart';
 import 'package:phone007/widgets/exports.dart';
-import 'package:phone007/widgets/start_button.dart';
 
-class Introduction extends StatelessWidget {
-  const Introduction({Key? key, required this.mission}) : super(key: key);
-  final Mission mission;
+class Introduction extends StatefulWidget {
+  const Introduction({
+    Key? key,
+    required this.missionId,
+  }) : super(key: key);
+
+  final int missionId;
+  @override
+  State<Introduction> createState() => _IntroductionState();
+}
+
+class _IntroductionState extends State<Introduction> {
+  Mission? mission;
+  @override
+  void initState() {
+    super.initState();
+
+    mission =
+        Di().getStore().state.missionState.getMissionById(widget.missionId);
+    if (mission != null) {
+      Di().getStore().dispatch(SetCurrentMission(mission!));
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant Introduction oldWidget) {
+    if (oldWidget.missionId != widget.missionId) {
+      mission =
+          Di().getStore().state.missionState.getMissionById(widget.missionId);
+      if (mission != null) {
+        Di().getStore().dispatch(SetCurrentMission(mission!));
+      }
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (mission == null) {
+      return const Center(
+        child: Material(
+          child: Text(
+            'Mission not found!',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      );
+    }
     return Scaffold(
       body: Container(
         child: Column(
@@ -25,7 +65,7 @@ class Introduction extends StatelessWidget {
                   decoration: new BoxDecoration(
                     image: new DecorationImage(
                       image: new AssetImage(
-                        mission.image,
+                        mission!.image,
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -37,7 +77,7 @@ class Introduction extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Text(
-                mission.title,
+                mission!.title,
                 style: const TextStyle(
                   fontFamily: 'PermanentMarker',
                   fontSize: 32.0,
@@ -48,18 +88,19 @@ class Introduction extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(bottom: 12.0),
               padding:
-                  const EdgeInsets.symmetric(vertical: 6, horizontal: 24.0),
+                  const EdgeInsets.symmetric(vertical: 6, horizontal: 80.0),
               child: Text(
-                mission.description,
+                mission!.description,
                 style: const TextStyle(
                   fontFamily: 'Caveat',
-                  fontSize: 20.0,
+                  fontSize: 24.0,
                   fontWeight: FontWeight.w400,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
             StartButton(onPressed: () {
-              Di().getStore().dispatch(InitMission(mission));
+              Di().getStore().dispatch(InitMission(mission!));
               Navigator.of(context).push<dynamic>(
                 MaterialPageRoute<dynamic>(
                   builder: (BuildContext context) => MissionScreen(),

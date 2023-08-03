@@ -15,6 +15,15 @@ class ChatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Messages',
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
       body: StoreConnector<AppState, List<ChatThreadView>>(
         converter: (Store<AppState> store) {
           return store.state.chatMessageState
@@ -30,8 +39,8 @@ class ChatList extends StatelessWidget {
                   right: 18.0,
                   bottom: 12.0,
                 ),
-                child: Column(
-                  children: const <Widget>[
+                child: const Column(
+                  children: <Widget>[
                     const Text(
                       'Messages',
                       style: TextStyle(

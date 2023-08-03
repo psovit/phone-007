@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phone007/models/exports.dart';
-import 'package:phone007/redux/mission_state/actions/export.dart';
-import 'package:phone007/screens/missions/introduction.dart';
-import 'package:phone007/utils/exports.dart';
 
 class MissionCard extends StatelessWidget {
   const MissionCard({
@@ -40,7 +38,7 @@ class MissionCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             child: useNetworkImage
                 ? Image.network(
-                    'https://link-images-staging.s3.amazonaws.com/ea2f376860a94dafba5ec0140628b352',
+                    'https://images.pexels.com/photos/2228552/pexels-photo-2228552.jpeg',
                     height: 120,
                     fit: BoxFit.fill,
                   )
@@ -76,14 +74,7 @@ class MissionCard extends StatelessWidget {
             );
             return;
           }
-          Di().getStore().dispatch(SetCurrentMission(mission));
-          Navigator.of(context, rootNavigator: true).push<dynamic>(
-            MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => Introduction(
-                mission: mission,
-              ),
-            ),
-          );
+          context.go('/mission-intro/${mission.id}');
         },
       ),
     );
